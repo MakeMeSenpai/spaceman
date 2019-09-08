@@ -14,6 +14,7 @@ def load_word():
 def is_word_guessed(guessed):
     if not '_' in guessed:
         print("GRANTZ")
+        return True
 
 #uses list comprehension in order to see if the letter is in the word or not. Thank you Ryan for the help!
 def get_guessed_word(secret_word, letters_guessed): 
@@ -35,25 +36,25 @@ def is_guess_in_word(guess, secret_word):
         print(letters_guessed)
         "".join(letters_guessed)
         return True
-        
+
 #controls other functions to run the game
 def spaceman(secret_word):
     incorrect = 0
     a = "Nice Choice! "
     b = "Try Again! Guesses left: "
     z = "_"
+    
     for guesses in range(16):
         guesses += 1
         guess = input('Guess a letter! ').lower()
         if is_guess_in_word(guess, secret_word):
+            z = get_guessed_word(secret_word, letters_guessed)
+            print(a + z)
             if is_word_guessed(z):
                 a = "Yay! You're so smart! You Win!"
                 print(a)
                 print("The Word was '" + secret_word + "'")
                 break
-            else:
-                z = get_guessed_word(secret_word, letters_guessed)
-                print(a + z)
         elif is_guess_in_word(guess, secret_word) == False:
             if incorrect == 6:
                 b = "Sorry... Game Over XC"
@@ -68,7 +69,6 @@ def spaceman(secret_word):
             print("Sorry...Something went wrong. Your word was '" + secret_word + "'")
             break
 
-# TODO: show the guessed word so far, and save guesses
 # Use ASCII art to draw the spaceman with each incorrect guess
 #double interations means double printing and less effiecient code
 
