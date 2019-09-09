@@ -13,7 +13,6 @@ def load_word():
 #checks if letters_guessed is in secret word to let the player win
 def is_word_guessed(guessed):
     if not '_' in guessed:
-        print("GRANTZ")
         return True
 
 #uses list comprehension in order to see if the letter is in the word or not. Thank you Ryan for the help!
@@ -24,18 +23,25 @@ def get_guessed_word(secret_word, letters_guessed):
 #checks if guess is in word and cancles out already guessed letters or inproper input
 def is_guess_in_word(guess, secret_word): 
     global letters_guessed
-    if guess.isalpha() == False:
-        print("Please choose a letter")
-    elif len(guess) > 1:
-        print("You can only choose one.")
-    elif guess in letters_guessed:
-        print("But you already chose that one! Try another.")
+    if guess in secret_word:
+        if guess in letters_guessed:
+            print("But you already chose that one! Try another.")
+        else:
+            letters_guessed.append(guess)
+            print('Good guess!')
+            return True
     else:
+        # print('Wrong guess! Try again.')
         letters_guessed.append(guess)
-        print('hek')
-        print(letters_guessed)
-        "".join(letters_guessed)
-        return True
+        return False
+    # else:
+    #     letters_guessed.append(guess)
+    #     "".join(letters_guessed)
+    #     if guess in secret_word:
+    #         return True
+    #     else:
+    #         print("False")
+    #         return False
 
 #controls other functions to run the game
 def spaceman(secret_word):
@@ -65,12 +71,12 @@ def spaceman(secret_word):
                 incorrect += 1
                 c = 7 - incorrect
                 print(b + str(c))
-        if guesses == 15:
+        elif guesses == 15:
             print("Sorry...Something went wrong. Your word was '" + secret_word + "'")
             break
 
-# Use ASCII art to draw the spaceman with each incorrect guess
-#double interations means double printing and less effiecient code
+#Double interation causes wrong answers to be interpreted again and 
+# Use ASCII art to draw the spaceman with each incorrect guess 
 
 # These function calls that will start the game
 secret_word = "woord" #load_word()
