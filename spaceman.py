@@ -13,7 +13,6 @@ def load_word():
 #checks if letters_guessed is in secret word to let the player win
 def is_word_guessed(guessed):
     if not '_' in guessed:
-        print("GRANTZ")
         return True
 
 #uses list comprehension in order to see if the letter is in the word or not. Thank you Ryan for the help!
@@ -30,12 +29,14 @@ def is_guess_in_word(guess, secret_word):
         print("You can only choose one.")
     elif guess in letters_guessed:
         print("But you already chose that one! Try another.")
-    else:
-        letters_guessed.append(guess)
-        print('hek')
         print(letters_guessed)
+    elif guess in secret_word:
+        letters_guessed.append(guess)
         "".join(letters_guessed)
         return True
+    else:
+        letters_guessed.append(guess)
+        return False
 
 #controls other functions to run the game
 def spaceman(secret_word):
@@ -47,7 +48,8 @@ def spaceman(secret_word):
     for guesses in range(16):
         guesses += 1
         guess = input('Guess a letter! ').lower()
-        if is_guess_in_word(guess, secret_word):
+        x = is_guess_in_word(guess, secret_word)
+        if x:
             z = get_guessed_word(secret_word, letters_guessed)
             print(a + z)
             if is_word_guessed(z):
@@ -55,7 +57,7 @@ def spaceman(secret_word):
                 print(a)
                 print("The Word was '" + secret_word + "'")
                 break
-        elif is_guess_in_word(guess, secret_word) == False:
+        elif x == False:
             if incorrect == 6:
                 b = "Sorry... Game Over XC"
                 print(b)
@@ -70,7 +72,6 @@ def spaceman(secret_word):
             break
 
 # Use ASCII art to draw the spaceman with each incorrect guess
-#double interations means double printing and less effiecient code
 
 # These function calls that will start the game
 secret_word = "woord" #load_word()
