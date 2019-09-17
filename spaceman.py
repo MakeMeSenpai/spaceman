@@ -1,9 +1,17 @@
 import random
-import time
 import os 
 
 #creates a saved guessed list
 letters_guessed = []
+
+def test_added_letters_to_letters_guessed():
+    assert letters_guessed == guess in letters_guessed
+    return "Maybe it works"
+
+
+def test_test_because_im_bad_at_this():
+    assert test_added_letters_to_letters_guessed
+    return "It definitly works!! Awesome job!"
 
 # reads txt file and returns secret word
 def load_word(): 
@@ -11,6 +19,10 @@ def load_word():
         words_list = f.read().split(' ')
     secret_word = random.choice(words_list)
     return secret_word
+
+def test_word_in_secret_word():
+  assert load_word() == secret_word
+  return secret_word
 
 #checks if letters_guessed is in secret word to let the player win
 def is_word_guessed(guessed):
@@ -26,15 +38,12 @@ def get_guessed_word(secret_word, letters_guessed):
 def is_guess_in_word(guess, secret_word): 
     global letters_guessed
     if guess.isalpha() == False:
-        time.sleep(1)
         os.system('clear')
         print("Please choose a letter")
     elif len(guess) > 1:
-        time.sleep(1)
         os.system('clear')
         print("You can only choose one.")
     elif guess in letters_guessed:
-        time.sleep(1)
         os.system('clear')
         print("But you already chose that one! Try another.")
         print(letters_guessed)
@@ -53,17 +62,15 @@ def spaceman(secret_word):
     b = "Try Again! Guesses left: "
     z = "_"
     
-    for guesses in range(16):
+    for guesses in range(25):
         guesses += 1
         guess = input('Guess a letter! ').lower()
         x = is_guess_in_word(guess, secret_word)
         if x:
-            time.sleep(1)
             os.system('clear')
             z = get_guessed_word(secret_word, letters_guessed)
             print(a + z)
             if is_word_guessed(z):
-                time.sleep(1)
                 os.system('clear')
                 a = "Yay! You're so smart! You Win!"
                 print(a)
@@ -71,7 +78,6 @@ def spaceman(secret_word):
                 break
         elif x == False:
             if incorrect == 6:
-                time.sleep(1)
                 os.system('clear')
                 b = "Sorry... Game Over XC"
                 print(b)
@@ -80,7 +86,6 @@ def spaceman(secret_word):
             else:
                 incorrect += 1
                 c = 7 - incorrect
-                time.sleep(1)
                 os.system('clear')
                 print(b + str(c))
                 if c == 6:
@@ -313,8 +318,7 @@ def spaceman(secret_word):
 __    ....         ''        ...""       ....'''      -_~~~     ~~~...
                     """)
 #ASCII done by Jro on https://www.asciiart.eu/space/astronauts. Thanks for the art! 
-        if guesses == 15:
-            time.sleep(1)
+        if guesses == 24:
             os.system('clear')
             print("Sorry...Something went wrong. Your word was '" + secret_word + "'")
             break
