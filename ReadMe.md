@@ -1,0 +1,1 @@
+Hangman! I mean Spaceman, is a game where you guess letters to see if you get the word right, or get a pretty picture by losing. This is a terminal based program and I hope you can have some fun with it. (it is pretty challenging)

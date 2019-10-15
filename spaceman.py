@@ -4,25 +4,12 @@ import os
 #creates a saved guessed list
 letters_guessed = []
 
-def test_added_letters_to_letters_guessed():
-    assert letters_guessed == guess in letters_guessed
-    return "Maybe it works"
-
-
-def test_test_because_im_bad_at_this():
-    assert test_added_letters_to_letters_guessed
-    return "It definitly works!! Awesome job!"
-
 # reads txt file and returns secret word
 def load_word(): 
     with open('words.txt', 'r') as f:
         words_list = f.read().split(' ')
     secret_word = random.choice(words_list)
     return secret_word
-
-def test_word_in_secret_word():
-  assert load_word() == secret_word
-  return secret_word
 
 #checks if letters_guessed is in secret word to let the player win
 def is_word_guessed(guessed):
@@ -324,5 +311,6 @@ __    ....         ''        ...""       ....'''      -_~~~     ~~~...
             break
 
 # These function calls that will start the game
-secret_word = load_word()
-spaceman(secret_word)
+if __name__ == "__main__":
+  secret_word = load_word()
+  spaceman(secret_word)
