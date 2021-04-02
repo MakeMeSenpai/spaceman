@@ -1,7 +1,10 @@
-# SpaceMan
+# Spaceman
+Try to guess the word before the autronaut takes off! (terminal based game)
 
-Hangman! I mean Spaceman, is a game where you guess letters to see if you get the word right, or get a pretty picture by 
-losing. This is a terminal based program and I hope you can have some fun with it. (it is pretty challenging)
-### to run use $ python3 spaceman.py 
-This takes words from a written file, and randomly chooses one, then asks the user to guess the word. Be warned tho, if you
-miss too many letters you might get a spaceman on your hands!
+## How To Run
+- You will need Python3 and git downloaded onto your computer
+- Open your computers terminal and go into a folder you would like this game to stay in. 
+- Once this is found use 
+`$git clone https://github.com/MakeMeSenpai/Spaceman-1`
+to install the repo locally
+- `$python3 spaceman.py`
